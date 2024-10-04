@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { useLoginMutation } from '../../redux/api/usersApiSlice'
+import { useLogoutMutation } from '../../redux/api/usersApiSlice'
 import { logout } from "../../redux/features/auth/authSlice"
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [logoutApiCall] = useLoginMutation()
+  const [logoutApiCall] = useLogoutMutation()
 
   const logoutHandler = async () => {
     try {
@@ -49,9 +49,48 @@ const Navigation = () => {
             <></>
           )}
         </button>
+        <div>
+          {userInfo && (
+            <div>
+              {userInfo.isAdmin && (
+                <>
+                  <Link to="/admin/dashboard">
+                    Dashboard
+                  </Link>
+                  <Link to="/admin/productlist">
+                    Products
+                  </Link>
+                  <Link to="/admin/categorylist">
+                    Category
+                  </Link>
+                  <Link to="/admin/orderlist">
+                    Orders
+                  </Link>
+                  <Link to="/admin/userlist">
+                    Users
+                  </Link>
+                </>
+              )
+              }
+              <Link to="/profile" >
+                Profile
+              </Link>
+              <button
+                onClick={logoutHandler}
+              >
+                Logout
+              </button>
+            </div>
+          )}
+          {!userInfo && (
+            <>
+              <Link to="/login">login</Link>
+              <Link to="/register">register</Link>
+            </>
+          )}
+        </div>
       </div>
-      <Link to="/login">login</Link>
-      <Link to="/register">register</Link>
+
     </div>
   )
 }

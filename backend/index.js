@@ -1,6 +1,7 @@
 //packages
 import path from 'path';
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
@@ -14,6 +15,12 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
+
+// Configuracion CORS
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true, // Permitir el envío de cookies
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

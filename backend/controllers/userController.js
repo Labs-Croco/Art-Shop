@@ -3,7 +3,7 @@ import asyncHandler from '../middlewares/asyncHandler.js';
 import bcrypt from 'bcryptjs';
 import createToken from '../utils/createToken.js'
 
-const createUSer = asyncHandler(async (req, res) => {
+const createUser = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -164,7 +164,7 @@ const updateUserById = asyncHandler(async (req, res) => {
 })
 
 export {
-    createUSer,
+    createUser,
     loginUser,
     logoutCurrentUser,
     getAllUsers,

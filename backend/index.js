@@ -16,15 +16,27 @@ connectDB();
 
 const app = express();
 
+app.use(cookieParser());
+
 // Configuracion CORS
 app.use(cors({
+    credentials: true,
     origin: 'http://localhost:5173',
-    credentials: true, // Permitir el envío de cookies
 }));
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Orgin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header("Acces-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    next();
+})
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser());
 
 app.use('/api/users', userRoutes)
 

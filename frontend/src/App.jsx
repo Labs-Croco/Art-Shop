@@ -6,7 +6,8 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="bg-[#180115] text-white min-h-screen"> 
+        <Butt
         <Navigation />
         <main>
           <Outlet />

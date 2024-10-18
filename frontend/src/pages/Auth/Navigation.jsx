@@ -23,74 +23,78 @@ const Navigation = () => {
   }
 
   return (
-    <div>
-      Navigation
-      <div>
+    <div className="grid grid-cols-2 gap-6 p-6">
+      {/* Columna 1: Logo y Links */}
+      <div className="flex flex-col items-center">
+        {/* Logo */}
+        <img src="../../../src/assets/logo_v1.png" alt="logo" width={200} className="mb-8" />
 
-        <Link to="/" >
-          Home
-        </Link>
-        <Link to="/shop" >
-          shop
-        </Link>
-        <Link to="/cart" >
-          cart
-        </Link>
-        <Link to="/cart" >
-          favorites
-        </Link>
-      </div>
-
-      <div>
-        <button>
-          {userInfo ? (
-            <span>{userInfo.username}</span>
-          ) : (
-            <></>
-          )}
-        </button>
-        <div>
-          {userInfo && (
-            <div>
-              {userInfo.isAdmin && (
-                <>
-                  <Link to="/admin/dashboard">
-                    Dashboard
-                  </Link>
-                  <Link to="/admin/productlist">
-                    Products
-                  </Link>
-                  <Link to="/admin/categorylist">
-                    Category
-                  </Link>
-                  <Link to="/admin/orderlist">
-                    Orders
-                  </Link>
-                  <Link to="/admin/userlist">
-                    Users
-                  </Link>
-                </>
-              )
-              }
-              <Link to="/profile" >
-                Profile
-              </Link>
-              <button
-                onClick={logoutHandler}
-              >
-                Logout
-              </button>
-            </div>
-          )}
-          {!userInfo && (
-            <>
-              <Link to="/login">login</Link>
-              <Link to="/register">register</Link>
-            </>
-          )}
+        {/* Links Verticales */}
+        <div className="flex flex-col space-y-4 text-center">
+          <Link to="/" className="hover:text-gray-500">
+            Inicio
+          </Link>
+          <Link to="/shop" className="hover:text-gray-500">
+            Tienda
+          </Link>
+          <Link to="/cart" className="hover:text-gray-500">
+            Carrito
+          </Link>
+          <Link to="/favorites" className="hover:text-gray-500">
+            Favoritos
+          </Link>
         </div>
       </div>
 
+      {/* Columna 2: Resto del contenido */}
+      <div>
+        <div className="mb-4">
+          <button className="text-gray-700 hover:text-gray-500">
+            {userInfo ? (
+              <span>{userInfo.username}</span>
+            ) : (
+              <></>
+            )}
+          </button>
+        </div>
+
+        {userInfo && (
+          <div className="space-y-4">
+            {userInfo.isAdmin && (
+              <>
+                <Link to="/admin/dashboard" className="hover:text-gray-500">
+                  Dashboard
+                </Link>
+                <Link to="/admin/productlist" className="hover:text-gray-500">
+                  Products
+                </Link>
+                <Link to="/admin/categorylist" className="hover:text-gray-500">
+                  Category
+                </Link>
+                <Link to="/admin/orderlist" className="hover:text-gray-500">
+                  Orders
+                </Link>
+                <Link to="/admin/userlist" className="hover:text-gray-500">
+                  Users
+                </Link>
+              </>
+            )}
+            <Link to="/profile" className="hover:text-gray-500">
+              Profile
+            </Link>
+            <button onClick={logoutHandler} className="text-red-500 hover:text-red-700">
+              Logout
+            </button>
+          </div>
+        )}
+
+        {!userInfo && (
+          <div className="space-x-4">
+            <Link to="/login" className="hover:text-gray-500">Login</Link>
+            <Link to="/register" className="hover:text-gray-500">Register</Link>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

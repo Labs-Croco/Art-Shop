@@ -10,8 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.1.0",
+=======
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.3",
+>>>>>>> 43caa06801afec264c898e5c33c10d0cd9aaf417
     "@reduxjs/toolkit": "^2.2.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -26,7 +34,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+<<<<<<< HEAD
     "@types/node": "^22.7.6",
+=======
+    "@types/node": "^22.7.7",
+>>>>>>> 43caa06801afec264c898e5c33c10d0cd9aaf417
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

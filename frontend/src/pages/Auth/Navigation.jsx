@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { useLogoutMutation } from '../../redux/api/usersApiSlice'
 import { logout } from "../../redux/features/auth/authSlice"
+import { FaHome, FaStore, FaShoppingCart, FaHeart } from 'react-icons/fa';
 
 const Navigation = () => {
 
@@ -23,24 +24,51 @@ const Navigation = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-6 p-6">
+    <div className="grid grid-cols-[20%_80%] gap-6 p-6">
       {/* Columna 1: Logo y Links */}
       <div className="flex flex-col items-center">
         {/* Logo */}
         <img src="../../../src/assets/logo_v1.png" alt="logo" width={200} className="mb-8" />
 
         {/* Links Verticales */}
-        <div className="flex flex-col space-y-4 text-center">
-          <Link to="/" className="hover:text-gray-500">
+        <div className="flex flex-col space-y-4 text-center md:space-y-2 md:text-left">
+          {/* Enlace para pantallas pequeñas: ícono en burbuja redonda */}
+          <Link
+            to="/"
+            className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <FaHome size={24} />
+          </Link>
+          <Link
+            to="/shop"
+            className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <FaStore size={24} />
+          </Link>
+          <Link
+            to="/cart"
+            className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <FaShoppingCart size={24} />
+          </Link>
+          <Link
+            to="/favorites"
+            className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <FaHeart size={24} />
+          </Link>
+
+          {/* Enlace para pantallas más grandes: texto normal */}
+          <Link to="/" className="hidden md:inline hover:text-gray-500">
             Inicio
           </Link>
-          <Link to="/shop" className="hover:text-gray-500">
+          <Link to="/shop" className="hidden md:inline hover:text-gray-500">
             Tienda
           </Link>
-          <Link to="/cart" className="hover:text-gray-500">
+          <Link to="/cart" className="hidden md:inline hover:text-gray-500">
             Carrito
           </Link>
-          <Link to="/favorites" className="hover:text-gray-500">
+          <Link to="/favorites" className="hidden md:inline hover:text-gray-500">
             Favoritos
           </Link>
         </div>
@@ -90,8 +118,8 @@ const Navigation = () => {
 
         {!userInfo && (
           <div className="space-x-4">
-            <Link to="/login" className="hover:text-gray-500">Login</Link>
-            <Link to="/register" className="hover:text-gray-500">Register</Link>
+            <Link to="/login" className="hover:text-gray-500">Iniciar Sesion</Link>
+            <Link to="/register" className="hover:text-gray-500">Registrarme</Link>
           </div>
         )}
       </div>

@@ -63,9 +63,9 @@ const Login = () => {
 
             <div>
                 <p>
-                    New Customer ? {" "}
+                    Eres nuevo ? {" "}
                     <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} >
-                        Register
+                        Registrate
                     </Link>
                 </p>
             </div>

@@ -6,8 +6,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-[#180115] text-white min-h-screen"> 
-        <Butt
+      <div className="bg-gradient-to-b from-[#1B0140] via-[#36072a] to-[#1D0259] text-white min-h-screen"> 
         <Navigation />
         <main>
           <Outlet />
